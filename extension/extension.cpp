@@ -8,9 +8,15 @@ namespace {
 OverrideTickrate g_override_tickrate;
 
 float GetTickInterval() {
+  ICommandLine* command_line = CommandLine();
+
+  if (!command_line->CheckParm("-tickrate")) {
+    RETURN_META_VALUE(MRES_IGNORED, 1.0f);
+  }
+
   int tickrate = CommandLine()->ParmValue("-tickrate", 100);
   if (tickrate < 30) {
-    tickrate = 30;
+    RETURN_META_VALUE(MRES_IGNORED, 1.0f);
   }
 
   RETURN_META_VALUE(MRES_SUPERCEDE, 1.0f / static_cast<float>(tickrate));
