@@ -17,11 +17,8 @@ cd ../extension
 ./build.sh
 cd ..
 
-tar -czf override_tickrate_source.tar.gz extension build.ps1 build.sh LICENSE README.md
-
 cd build
 tar -czf override_tickrate.tar.gz addons
 mkdir -p dist
 mv override_tickrate.tar.gz dist/override_tickrate.tar.gz
-mv ../override_tickrate_source.tar.gz dist/override_tickrate_source.tar.gz
 cd ..

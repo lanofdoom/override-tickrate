@@ -1,5 +1,7 @@
 #include "extension.h"
 
+#include <string>
+
 #include "sourcehook.h"
 #include "tier0/icommandline.h"
 
@@ -30,6 +32,29 @@ bool OverrideTickrate::SDK_OnMetamodLoad(ISmmAPI* ismm, char* error,
                                          size_t maxlength, bool late) {
   SH_ADD_HOOK(IServerGameDLL, GetTickInterval, gamedll,
               SH_STATIC(GetTickInterval), false);
+  return true;
+}
+
+virtual bool OverrideTickrate::SDK_OnAllLoaded() override {
+  if (server_reinitialized_) {
+    return true;
+  }
+
+  const char* current_map = gamehelpers->GetCurrentMap();
+
+  if (!IsMapValid(current_map)) {
+    rootconsole->ConsolePrint(
+        "current map invalid, no need to re-initialize tickrate");
+    return true;
+  }
+
+  std::string command = "changelevel ";
+  command += current_map;
+
+  rootconsole->ConsolePrint("re-initializing level with new tickrate");
+  gamehelpers->ServerCommand(command.c_str());
+  server_reinitialized_ = true;
+
   return true;
 }
 

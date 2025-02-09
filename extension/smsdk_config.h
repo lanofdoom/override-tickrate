@@ -12,7 +12,9 @@
 
 #define SMEXT_LINK(name) SDKExtension *g_pExtensionIface = name;
 
-// Enable SourceHook
+// Enable SourceHook, IGameHelper, and console out
 #define SMEXT_CONF_METAMOD
+#define SMEXT_ENABLE_GAMEHELPERS
+#define SMEXT_ENABLE_ROOTCONSOLEMENU
 
-#endif // _OVERRIDE_TICKRATE_EXTENSION_SMSDK_CONFIG_
+#endif  // _OVERRIDE_TICKRATE_EXTENSION_SMSDK_CONFIG_

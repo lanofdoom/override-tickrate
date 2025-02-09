@@ -6,7 +6,7 @@ python ..\configure.py --hl2sdk-manifest-path ./hl2sdk-manifests
 ambuild
 
 mkdir -p ..\..\..\build\addons\sourcemod\extensions
-copy nul package/addons/sourcemod/extensions/override_tickrate.autolaunch
+New-Item -Path "package/addons/sourcemod/extensions/override_tickrate.autoload" -ItemType "File"
 cp -r package\addons\sourcemod\extensions\* ..\..\..\build\addons\sourcemod\extensions\
 
 echo built override_tickrate.ext.dll
