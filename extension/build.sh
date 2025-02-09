@@ -12,6 +12,7 @@
 mkdir -p ../alliedmodders/extension/build
 cp -r ./* ../alliedmodders/extension/
 cd ../alliedmodders/extension/build
+git clone https://github.com/alliedmodders/hl2sdk-manifests.git
 CC=clang CXX=clang++ python3 ../configure.py
 ambuild
 
