@@ -18,7 +18,7 @@ jobs:
           .\build.ps1
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2.2.1
+        uses: actions/upload-artifact@v4
         with:
           name: output_windows
           path: build/dist/override_tickrate.zip
@@ -43,7 +43,7 @@ jobs:
           PATH=/home/runner/.local/bin:$PATH ./build.sh
 
       - name: Collect Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: output_linux
           path: build/dist
