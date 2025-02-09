@@ -36,26 +36,21 @@ bool OverrideTickrate::SDK_OnMetamodLoad(ISmmAPI* ismm, char* error,
 }
 
 void OverrideTickrate::SDK_OnAllLoaded() {
-  if (server_reinitialized_) {
-    return true;
+  if (!server_reinitialized_) {
+    const char* current_map = gamehelpers->GetCurrentMap();
+
+    if (!gamehelpers->IsMapValid(current_map)) {
+      rootconsole->ConsolePrint(
+          "Current map invalid, no need to re-initialize tickrate");
+    }
+
+    rootconsole->ConsolePrint("Re-initializing server with new tickrate");
+
+    std::string command = std::string("changelevel ") + current_map;
+    gamehelpers->ServerCommand(command.c_str());
+
+    server_reinitialized_ = true;
   }
-
-  const char* current_map = gamehelpers->GetCurrentMap();
-
-  if (!gamehelpers->IsMapValid(current_map)) {
-    rootconsole->ConsolePrint(
-        "Current map invalid, no need to re-initialize tickrate");
-    return true;
-  }
-
-  rootconsole->ConsolePrint("Re-initializing server with new tickrate");
-
-  std::string command = std::string("changelevel ") + current_map;
-  gamehelpers->ServerCommand(command.c_str());
-
-  server_reinitialized_ = true;
-
-  return true;
 }
 
 void OverrideTickrate::SDK_OnUnload() {
