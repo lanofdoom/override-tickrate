@@ -2,6 +2,9 @@
 
 #include <algorithm>
 
+#include "tier0/icommandline.h"
+#include "sourcehook.h"
+
 namespace {
 
 OverrideTickrate g_override_tickrate;
