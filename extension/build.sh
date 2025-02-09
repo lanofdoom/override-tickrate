@@ -17,7 +17,7 @@ CC=clang CXX=clang++ python3 ../configure.py --hl2sdk-manifest-path ./hl2sdk-man
 ambuild
 
 mkdir -p ../../../build/addons/sourcemod/extensions
-cp package/addons/sourcemod/extensions/* ../../../build/addons/sourcemod/extensions/
+cp -r package/addons/sourcemod/extensions/* ../../../build/addons/sourcemod/extensions/
 
 echo built override_tickrate.ext.so
 
