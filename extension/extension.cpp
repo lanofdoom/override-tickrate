@@ -1,16 +1,18 @@
 #include "extension.h"
 
-#include <algorithm>
-
-#include "tier0/icommandline.h"
 #include "sourcehook.h"
+#include "tier0/icommandline.h"
 
 namespace {
 
 OverrideTickrate g_override_tickrate;
 
 float GetTickInterval() {
-  int tickrate = std::max(30, CommandLine()->ParmValue("-tickrate", 100));
+  int tickrate = CommandLine()->ParmValue("-tickrate", 100);
+  if (tickrate < 30) {
+    tickrate = 30;
+  }
+
   RETURN_META_VALUE(MRES_SUPERCEDE, 1.0f / static_cast<float>(tickrate));
 }
 
