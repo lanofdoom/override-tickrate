@@ -12,4 +12,7 @@
 
 #define SMEXT_LINK(name) SDKExtension *g_pExtensionIface = name;
 
+// Enable SourceHook
+#define SMEXT_CONF_METAMOD
+
 #endif // _OVERRIDE_TICKRATE_EXTENSION_SMSDK_CONFIG_
