@@ -3,10 +3,11 @@
 
 #include "smsdk_ext.h"
 
-class OverrideTickrate : public SDKExtension {
+class OverrideTickrate final : public SDKExtension {
  public:
-  virtual bool SDK_OnLoad(char* error, size_t maxlength, bool late);
-  virtual void SDK_OnUnload();
+  virtual bool SDK_OnMetamodLoad(ISmmAPI* ismm, char* error, size_t maxlength,
+                                 bool late) override;
+  virtual void SDK_OnUnload() override;
 };
 
 #endif  // _OVERRIDE_TICKRATE_EXTENSION_EXTENSION_

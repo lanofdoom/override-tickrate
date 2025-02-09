@@ -26,7 +26,8 @@ float GetTickInterval() {
 
 SH_DECL_HOOK0(IServerGameDLL, GetTickInterval, const, 0, float);
 
-bool OverrideTickrate::SDK_OnLoad(char* error, size_t maxlength, bool late) {
+bool OverrideTickrate::SDK_OnMetamodLoad(ISmmAPI* ismm, char* error,
+                                         size_t maxlength, bool late) {
   SH_ADD_HOOK(IServerGameDLL, GetTickInterval, gamedll,
               SH_STATIC(GetTickInterval), false);
   return true;
