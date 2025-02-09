@@ -12,6 +12,7 @@ mkdir -p alliedmodders
 cd alliedmodders
 git clone --recursive https://github.com/alliedmodders/sourcemod
 bash sourcemod/tools/checkout-deps.sh
+mv mmsource-1.12 metamod-source
 
 cd ../extension
 ./build.sh

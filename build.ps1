@@ -2,6 +2,7 @@ mkdir -p alliedmodders
 cd alliedmodders
 git clone --recursive https://github.com/alliedmodders/sourcemod
 .\sourcemod\tools\checkout-deps.ps1
+rename mmsource-1.12 metamod-source
 
 cd ..\extension
 .\build.ps1
