@@ -35,7 +35,8 @@ bool OverrideTickrate::SDK_OnMetamodLoad(ISmmAPI* ismm, char* error,
   return true;
 }
 
-void OverrideTickrate::SDK_OnPauseChange(bool paused) {
+void OverrideTickrate::OnCoreMapStart(edict_t* pEdictList, int edictCount,
+                                      int clientMax) {
   if (!server_reinitialized_) {
     const char* current_map = gamehelpers->GetCurrentMap();
 
@@ -47,7 +48,7 @@ void OverrideTickrate::SDK_OnPauseChange(bool paused) {
 
     rootconsole->ConsolePrint("Re-initializing server with new tickrate");
 
-    std::string command = std::string("map ") + current_map + '\n';
+    std::string command = std::string("changelevel ") + current_map + '\n';
     gamehelpers->ServerCommand(command.c_str());
 
     server_reinitialized_ = true;
