@@ -7,7 +7,7 @@ class OverrideTickrate final : public SDKExtension {
  public:
   virtual bool SDK_OnMetamodLoad(ISmmAPI* ismm, char* error, size_t maxlength,
                                  bool late) override;
-  virtual void SDK_OnAllLoaded() override;
+  virtual void SDK_OnPauseChange(bool paused) override;
   virtual void SDK_OnUnload() override;
 
  private:

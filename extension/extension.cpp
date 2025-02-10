@@ -35,7 +35,7 @@ bool OverrideTickrate::SDK_OnMetamodLoad(ISmmAPI* ismm, char* error,
   return true;
 }
 
-void OverrideTickrate::SDK_OnAllLoaded() {
+void OverrideTickrate::SDK_OnPauseChange(bool paused) {
   if (!server_reinitialized_) {
     const char* current_map = gamehelpers->GetCurrentMap();
 
