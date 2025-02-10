@@ -47,7 +47,7 @@ void OverrideTickrate::SDK_OnAllLoaded() {
 
     rootconsole->ConsolePrint("Re-initializing server with new tickrate");
 
-    std::string command = std::string("map ") + current_map;
+    std::string command = std::string("map ") + current_map + '\n';
     gamehelpers->ServerCommand(command.c_str());
 
     server_reinitialized_ = true;

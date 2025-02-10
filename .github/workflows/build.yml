@@ -21,7 +21,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: override_tickrate.zip
+          name: windows
           path: build/dist/override_tickrate.zip
 
   build-linux:
@@ -46,5 +46,5 @@ jobs:
       - name: Collect Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: override_tickrate.tar.gz
+          name: linux
           path: build/dist/override_tickrate.tar.gz
