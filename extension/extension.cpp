@@ -1,7 +1,6 @@
 #include "extension.h"
 
 #include <string>
-#include <iostream>
 
 #include "sourcehook.h"
 #include "tier0/icommandline.h"
@@ -37,23 +36,18 @@ bool OverrideTickrate::SDK_OnMetamodLoad(ISmmAPI* ismm, char* error,
 }
 
 void OverrideTickrate::SDK_OnAllLoaded() {
-  rootconsole->ConsolePrint("OverrideTickrate::SDK_OnAllLoaded - Con");
-  std::cout << "OverrideTickrate::SDK_OnAllLoaded -- Cout" << std::endl;
-
   if (!server_reinitialized_) {
     const char* current_map = gamehelpers->GetCurrentMap();
 
     if (!gamehelpers->IsMapValid(current_map)) {
       rootconsole->ConsolePrint(
           "Current map invalid, no need to re-initialize tickrate");
-          std::cout << "Current map invalid, no need to re-initialize tickrate -- Cout" << std::endl;
       return;
     }
 
     rootconsole->ConsolePrint("Re-initializing server with new tickrate");
-    std::cout << "Re-initializing server with new tickrate -- Cout" << std::endl;
 
-    std::string command = std::string("changelevel ") + current_map;
+    std::string command = std::string("map ") + current_map;
     gamehelpers->ServerCommand(command.c_str());
 
     server_reinitialized_ = true;
