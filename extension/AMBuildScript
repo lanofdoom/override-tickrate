@@ -200,11 +200,9 @@ class ExtensionConfig(object):
       '-fno-strict-aliasing',
       '-Wall',
       '-Werror',
-      '-Wno-array-bounds',
-      '-Wno-expansion-to-defined',
-      '-Wno-implicit-const-int-float-conversion',
-      '-Wno-switch',
       '-Wno-unused',
+      '-Wno-switch',
+      '-Wno-array-bounds',
       '-fvisibility=hidden',
     ]
 
@@ -214,8 +212,6 @@ class ExtensionConfig(object):
     cxx.cxxflags += [
       '-fno-threadsafe-statics',
       '-Wno-non-virtual-dtor',
-      '-Wno-expansion-to-defined',
-      '-Wno-implicit-const-int-float-conversion',
       '-Wno-overloaded-virtual',
       '-Wno-register',
       '-fvisibility-inlines-hidden',
