@@ -8,7 +8,10 @@ jobs:
     runs-on: windows-2022
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
 
       - name: Build
         run: |
@@ -28,16 +31,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Remove python2
-        run: sudo apt-get remove python2 python2.7 && sudo apt-get autoremove
+      - uses: actions/checkout@v4
 
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install clang g++-multilib python3 python3-pip
-
-      - name: Enable i386 packages
-        run: sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get install -o APT::Immediate-Configure=false libcurl4-openssl-dev:i386
 
       - name: Build
         run:
